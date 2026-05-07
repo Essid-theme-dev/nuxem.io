@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Megaphone, Palette, Wrench } from "lucide-react";
+import { demoAvatars } from "@/app/lib/demo-avatars";
 import { Card } from "../ui/card";
 
 const groups = [
@@ -10,9 +11,9 @@ const groups = [
     focus: "UI system",
     activeProjects: 4,
     roster: [
-      { name: "Mira Stone", avatar: "https://picsum.photos/seed/mira-stone-portrait/80/80" },
-      { name: "Olivia Reed", avatar: "https://picsum.photos/seed/olivia-reed-portrait/80/80" },
-      { name: "Ethan Brooks", avatar: "https://picsum.photos/seed/ethan-brooks-portrait/80/80" },
+      { name: "Mira Stone", avatar: demoAvatars.miraStone },
+      { name: "Olivia Reed", avatar: demoAvatars.oliviaReed },
+      { name: "Ethan Brooks", avatar: demoAvatars.ethanBrooks },
     ],
     extraMembers: ["Liam Foster", "Ava Collins", "Noah Price", "Grace Turner", "Mason Bell"],
     icon: Palette,
@@ -24,9 +25,9 @@ const groups = [
     focus: "Platform delivery",
     activeProjects: 7,
     roster: [
-      { name: "Alex Carter", avatar: "https://picsum.photos/seed/alex-carter-portrait/80/80" },
-      { name: "Noah Smith", avatar: "https://picsum.photos/seed/noah-smith-portrait/80/80" },
-      { name: "Emma Lewis", avatar: "https://picsum.photos/seed/emma-lewis-portrait/80/80" },
+      { name: "Alex Carter", avatar: demoAvatars.alexCarter },
+      { name: "Noah Smith", avatar: demoAvatars.noahSmith },
+      { name: "Emma Lewis", avatar: demoAvatars.emmaLewis },
     ],
     extraMembers: ["Lucas Green", "Ella Adams", "James Ward", "Sofia Hayes", "Henry Cole"],
     icon: Wrench,
@@ -38,9 +39,9 @@ const groups = [
     focus: "Campaign growth",
     activeProjects: 3,
     roster: [
-      { name: "Sophie Evans", avatar: "https://picsum.photos/seed/sophie-evans-portrait/80/80" },
-      { name: "Lina Porter", avatar: "https://picsum.photos/seed/lina-porter-portrait/80/80" },
-      { name: "Mason Clark", avatar: "https://picsum.photos/seed/mason-clark-portrait/80/80" },
+      { name: "Sophie Evans", avatar: demoAvatars.sophieEvans },
+      { name: "Lina Porter", avatar: demoAvatars.linaPorter },
+      { name: "Mason Clark", avatar: demoAvatars.masonClark },
     ],
     extraMembers: ["Emma Brooks", "David Stone", "Mila Reed"],
     icon: Megaphone,

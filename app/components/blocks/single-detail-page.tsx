@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { CheckCircle2, CircleDashed, ListTodo, PlayCircle, Timer, X } from "lucide-react";
 import Image from "next/image";
+import { demoAvatarUrl } from "@/app/lib/demo-avatars";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { Card } from "../ui/card";
@@ -343,7 +344,10 @@ export function SingleDetailPage({ variant }: { variant: SingleDetailVariant }) 
                           <div className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-zinc-50 px-1.5 py-1 dark:border-zinc-700 dark:bg-zinc-800/60">
                             <span className="relative h-5 w-5 overflow-hidden rounded-full border border-white dark:border-zinc-900">
                               <Image
-                                src={`https://picsum.photos/seed/${task.assignee.toLowerCase().replace(/\s+/g, "-")}-avatar/72/72`}
+                                src={demoAvatarUrl(
+                                  task.assignee.toLowerCase().replace(/\s+/g, "-"),
+                                  72,
+                                )}
                                 alt={task.assignee}
                                 fill
                                 className="object-cover"

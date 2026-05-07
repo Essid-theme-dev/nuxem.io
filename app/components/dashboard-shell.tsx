@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { LogoLockup } from "@/app/components/brand/logo";
-import { publicAssetPath } from "@/app/lib/public-asset";
+import { demoAvatars } from "@/app/lib/demo-avatars";
 import { PageTabs } from "@/app/components/layout/page-tabs";
 import { getTabGroupForPath, navSections, resolvePageMeta } from "@/app/config/navigation";
 import { t } from "@/app/lib/i18n";
@@ -31,9 +31,9 @@ const accentThemes: Array<{ id: AccentTheme; color: string }> = [
 ];
 
 const marketingTeamAvatars = [
-  { src: "https://picsum.photos/seed/marketing-lead/80/80", name: "Sophie Evans" },
-  { src: "https://picsum.photos/seed/marketing-designer/80/80", name: "Lina Porter" },
-  { src: "https://picsum.photos/seed/marketing-analyst/80/80", name: "Mason Clark" },
+  { src: demoAvatars.sophieEvans, name: "Sophie Evans" },
+  { src: demoAvatars.linaPorter, name: "Lina Porter" },
+  { src: demoAvatars.masonClark, name: "Mason Clark" },
 ];
 
 export default function DashboardShell({ children }: DashboardShellProps) {
@@ -296,7 +296,7 @@ export default function DashboardShell({ children }: DashboardShellProps) {
           <div className={`flex items-center ${collapsed ? "flex-col gap-2" : "gap-3"}`}>
           <div className="relative size-[42px] shrink-0 overflow-hidden rounded-2xl shadow-md ring-4 ring-white/35 dark:ring-white/10">
             <Image
-              src={publicAssetPath("/user-avatar.svg")}
+              src={demoAvatars.alexCarter}
               alt="Alex Carter avatar"
               fill
               className="object-cover"
@@ -342,7 +342,7 @@ export default function DashboardShell({ children }: DashboardShellProps) {
               </div>
               <div className="flex items-start gap-3 p-3.5">
                 <div className="relative mt-0.5 size-9 shrink-0 overflow-hidden rounded-full ring-2 ring-white/70 dark:ring-zinc-800">
-                  <Image src={publicAssetPath("/user-avatar.svg")} alt="Emma avatar" fill className="object-cover" />
+                  <Image src={demoAvatars.emma} alt="Emma avatar" fill className="object-cover" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center justify-between gap-2">
@@ -597,7 +597,7 @@ export default function DashboardShell({ children }: DashboardShellProps) {
               >
                 <span className="relative size-7 overflow-hidden rounded-full ring-2 ring-white/35">
                   <Image
-                    src={publicAssetPath("/user-avatar.svg")}
+                    src={demoAvatars.alexCarter}
                     alt="Profile avatar"
                     fill
                     className="object-cover"

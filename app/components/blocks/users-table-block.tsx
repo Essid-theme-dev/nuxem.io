@@ -13,6 +13,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
+import { demoAvatarUrl } from "@/app/lib/demo-avatars";
 import { users, type UserRow } from "./dashboard-data";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
@@ -57,7 +58,7 @@ export function UsersTableBlock() {
             <div className="flex items-center gap-2.5">
               <div className="relative h-8 w-8 overflow-hidden rounded-full border border-zinc-200 dark:border-zinc-700">
                 <Image
-                  src={user.avatar || `https://picsum.photos/seed/${seed}-team-avatar/96/96`}
+                  src={user.avatar || demoAvatarUrl(seed, 96)}
                   alt={user.name}
                   fill
                   className="object-cover"

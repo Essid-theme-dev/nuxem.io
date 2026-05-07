@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { ArrowUpDown, Boxes, Search, Users } from "lucide-react";
 import { useMemo, useState } from "react";
+import { demoAvatarUrl } from "@/app/lib/demo-avatars";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { Card } from "../ui/card";
@@ -187,7 +188,7 @@ export function ProductsListPage() {
                       <div className="flex items-center gap-2">
                         <div className="relative h-8 w-8 overflow-hidden rounded-full border border-zinc-200 dark:border-zinc-700">
                           <Image
-                            src={`https://picsum.photos/seed/${seed}-owner-portrait/96/96`}
+                            src={demoAvatarUrl(seed, 96)}
                             alt={item.owner}
                             fill
                             className="object-cover"

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { publicAssetPath } from "@/app/lib/public-asset";
+import { demoAvatars } from "@/app/lib/demo-avatars";
 import { CalendarDays, Clock3, Mail, MapPin, Phone, Star, Users } from "lucide-react";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
@@ -43,7 +43,7 @@ export function EmployeeProfilePage() {
         <div className="flex flex-col gap-5 px-6 pb-6 pt-4 md:flex-row md:items-end md:justify-between">
           <div className="flex items-end gap-4">
             <div className="relative h-24 w-24 overflow-hidden rounded-2xl border-4 border-white bg-zinc-100 shadow-lg dark:border-zinc-900">
-              <Image src={publicAssetPath("/user-avatar.svg")} alt="Employee portrait" fill className="object-cover" />
+              <Image src={demoAvatars.employeeProfile} alt="Employee portrait" fill className="object-cover" />
             </div>
             <div>
               <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">Appointment employee</p>
