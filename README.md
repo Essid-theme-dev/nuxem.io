@@ -43,3 +43,11 @@ After pushing to `main`, go to your repository settings and set:
 2. **Source:** `GitHub Actions`
 
 Then your site will be published from the workflow run.
+
+### If you only see this README on the live URL
+
+1. In the repo: **Settings → Pages → Build and deployment**, set **Source** to **GitHub Actions** (not “Deploy from a branch”). A branch deployment with no `index.html` at the repo root often shows README-style content instead of the app.
+2. Open **Actions** and confirm the latest **Deploy to GitHub Pages** workflow succeeded.
+3. After a green deploy, open `https://<user>.github.io/<repo>/` — the dashboard should load from the `out/` artifact.
+
+Live example for this project pattern: [https://essid-theme-dev.github.io/nuxem.io/](https://essid-theme-dev.github.io/nuxem.io/)
