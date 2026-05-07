@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { publicAssetPath } from "@/app/lib/public-asset";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,9 +17,9 @@ export const metadata: Metadata = {
   title: "Nuxem Dashboard",
   description: "Dashboard app with collapsible sidebar and top navbar",
   icons: {
-    icon: "/logo-icon.svg",
-    shortcut: "/logo-icon.svg",
-    apple: "/logo-icon.svg",
+    icon: publicAssetPath("/logo-icon.svg"),
+    shortcut: publicAssetPath("/logo-icon.svg"),
+    apple: publicAssetPath("/logo-icon.svg"),
   },
 };
 

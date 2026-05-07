@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { LogoLockup } from "@/app/components/brand/logo";
+import { publicAssetPath } from "@/app/lib/public-asset";
 import { PageTabs } from "@/app/components/layout/page-tabs";
 import { getTabGroupForPath, navSections, resolvePageMeta } from "@/app/config/navigation";
 import { t } from "@/app/lib/i18n";
@@ -295,7 +296,7 @@ export default function DashboardShell({ children }: DashboardShellProps) {
           <div className={`flex items-center ${collapsed ? "flex-col gap-2" : "gap-3"}`}>
           <div className="relative size-[42px] shrink-0 overflow-hidden rounded-2xl shadow-md ring-4 ring-white/35 dark:ring-white/10">
             <Image
-              src="/user-avatar.webp"
+              src={publicAssetPath("/user-avatar.svg")}
               alt="Alex Carter avatar"
               fill
               className="object-cover"
@@ -341,7 +342,7 @@ export default function DashboardShell({ children }: DashboardShellProps) {
               </div>
               <div className="flex items-start gap-3 p-3.5">
                 <div className="relative mt-0.5 size-9 shrink-0 overflow-hidden rounded-full ring-2 ring-white/70 dark:ring-zinc-800">
-                  <Image src="/user-avatar.webp" alt="Emma avatar" fill className="object-cover" />
+                  <Image src={publicAssetPath("/user-avatar.svg")} alt="Emma avatar" fill className="object-cover" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center justify-between gap-2">
@@ -596,7 +597,7 @@ export default function DashboardShell({ children }: DashboardShellProps) {
               >
                 <span className="relative size-7 overflow-hidden rounded-full ring-2 ring-white/35">
                   <Image
-                    src="/user-avatar.webp"
+                    src={publicAssetPath("/user-avatar.svg")}
                     alt="Profile avatar"
                     fill
                     className="object-cover"

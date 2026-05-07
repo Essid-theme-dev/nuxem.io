@@ -2,6 +2,7 @@
 
 import { clsx } from "clsx";
 import Image from "next/image";
+import { publicAssetPath } from "@/app/lib/public-asset";
 
 type LogoMarkProps = {
   width?: number;
@@ -12,7 +13,7 @@ type LogoMarkProps = {
 export function LogoMark({ width = 168, height = 48, className }: LogoMarkProps) {
   return (
     <Image
-      src="/logo.svg"
+      src={publicAssetPath("/logo.svg")}
       alt="Nuxem logo"
       width={width}
       height={height}
