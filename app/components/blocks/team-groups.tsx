@@ -1,0 +1,120 @@
+import Image from "next/image";
+import { Megaphone, Palette, Wrench } from "lucide-react";
+import { Card } from "../ui/card";
+
+const groups = [
+  {
+    name: "Design Team",
+    members: 8,
+    lead: "Mira Stone",
+    focus: "UI system",
+    activeProjects: 4,
+    roster: [
+      { name: "Mira Stone", avatar: "https://picsum.photos/seed/mira-stone-portrait/80/80" },
+      { name: "Olivia Reed", avatar: "https://picsum.photos/seed/olivia-reed-portrait/80/80" },
+      { name: "Ethan Brooks", avatar: "https://picsum.photos/seed/ethan-brooks-portrait/80/80" },
+    ],
+    extraMembers: ["Liam Foster", "Ava Collins", "Noah Price", "Grace Turner", "Mason Bell"],
+    icon: Palette,
+  },
+  {
+    name: "Development Team",
+    members: 14,
+    lead: "Alex Carter",
+    focus: "Platform delivery",
+    activeProjects: 7,
+    roster: [
+      { name: "Alex Carter", avatar: "https://picsum.photos/seed/alex-carter-portrait/80/80" },
+      { name: "Noah Smith", avatar: "https://picsum.photos/seed/noah-smith-portrait/80/80" },
+      { name: "Emma Lewis", avatar: "https://picsum.photos/seed/emma-lewis-portrait/80/80" },
+    ],
+    extraMembers: ["Lucas Green", "Ella Adams", "James Ward", "Sofia Hayes", "Henry Cole"],
+    icon: Wrench,
+  },
+  {
+    name: "Marketing Team",
+    members: 6,
+    lead: "Sophie Evans",
+    focus: "Campaign growth",
+    activeProjects: 3,
+    roster: [
+      { name: "Sophie Evans", avatar: "https://picsum.photos/seed/sophie-evans-portrait/80/80" },
+      { name: "Lina Porter", avatar: "https://picsum.photos/seed/lina-porter-portrait/80/80" },
+      { name: "Mason Clark", avatar: "https://picsum.photos/seed/mason-clark-portrait/80/80" },
+    ],
+    extraMembers: ["Emma Brooks", "David Stone", "Mila Reed"],
+    icon: Megaphone,
+  },
+];
+
+export function TeamGroups() {
+  return (
+    <section className="grid gap-4 md:grid-cols-3">
+      {groups.map((group) => {
+        const Icon = group.icon;
+        return (
+          <Card key={group.name} className="group hover-lift overflow-hidden p-0">
+            <div className="relative h-32 w-full overflow-hidden bg-gradient-to-br from-[var(--theme-accent-bg)] via-white to-zinc-100 dark:from-[var(--theme-accent-bg-dark)] dark:via-zinc-900 dark:to-zinc-950">
+              <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-[var(--theme-accent-soft)] blur-2xl" />
+              <div className="absolute -bottom-10 left-1/2 h-28 w-28 -translate-x-1/2 rounded-full bg-[var(--theme-accent-ring)] blur-2xl" />
+              <div className="absolute inset-x-4 bottom-4 flex items-center justify-between">
+                <span className="inline-flex items-center gap-1 rounded-full border border-[var(--theme-accent-soft)] bg-white/95 px-2.5 py-1 text-[11px] font-semibold text-[var(--theme-accent-deep)] dark:bg-zinc-900/85 dark:text-[var(--theme-accent-ink)]">
+                  <Icon size={12} />
+                  {group.focus}
+                </span>
+                <span className="rounded-full bg-zinc-900/80 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-white dark:bg-zinc-100 dark:text-zinc-900">
+                  Team
+                </span>
+              </div>
+            </div>
+            <div className="p-5">
+              <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">User group</p>
+              <h3 className="mt-2 text-lg font-semibold tracking-tight">{group.name}</h3>
+              <p className="mt-1 text-sm text-zinc-500">{group.members} members</p>
+              <div className="mt-3 grid grid-cols-2 gap-2">
+                <div className="rounded-xl border border-zinc-200/80 bg-zinc-50/80 px-2.5 py-2 text-center dark:border-zinc-800 dark:bg-zinc-900/45">
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-zinc-400">Active</p>
+                  <p className="mt-0.5 text-sm font-semibold text-zinc-700 dark:text-zinc-200">{group.activeProjects}</p>
+                </div>
+                <div className="rounded-xl border border-zinc-200/80 bg-zinc-50/80 px-2.5 py-2 text-center dark:border-zinc-800 dark:bg-zinc-900/45">
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-zinc-400">Lead</p>
+                  <p className="mt-0.5 truncate text-sm font-semibold text-zinc-700 dark:text-zinc-200">{group.lead.split(" ")[0]}</p>
+                </div>
+              </div>
+              <div className="mt-3 flex items-center gap-2">
+                <div className="flex -space-x-2">
+                  {group.roster.map((member) => (
+                    <div key={member.name} className="group/avatar relative h-7 w-7 overflow-visible">
+                      <div className="relative h-7 w-7 overflow-hidden rounded-full border-2 border-white dark:border-zinc-900">
+                        <Image src={member.avatar} alt={member.name} fill className="object-cover" />
+                      </div>
+                      <span className="pointer-events-none absolute -top-9 left-1/2 z-20 hidden -translate-x-1/2 whitespace-nowrap rounded-lg border border-slate-200 bg-white px-2 py-1 text-[11px] font-semibold text-slate-700 shadow-lg group-hover/avatar:block dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100">
+                        {member.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <span className="group/extra relative text-xs text-zinc-500">
+                  +{Math.max(group.members - 3, 0)} more
+                  <span className="pointer-events-none absolute -top-2 left-1/2 z-20 hidden min-w-[170px] -translate-x-1/2 -translate-y-full rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-[11px] font-semibold text-slate-700 shadow-lg group-hover/extra:block dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100">
+                    <span className="mb-1 block text-[10px] uppercase tracking-wide text-zinc-400">Other members</span>
+                    <span className="block space-y-1">
+                      {group.extraMembers.map((member) => (
+                        <span key={member} className="block">
+                          {member}
+                        </span>
+                      ))}
+                    </span>
+                  </span>
+                </span>
+              </div>
+              <p className="mt-3 inline-flex items-center rounded-full border border-[var(--theme-accent-soft)] bg-[var(--theme-accent-bg)] px-2.5 py-1 text-sm font-medium text-[var(--theme-accent-deep)] dark:bg-[var(--theme-accent-bg-dark)] dark:text-[var(--theme-accent-ink)]">
+                Lead: {group.lead}
+              </p>
+            </div>
+          </Card>
+        );
+      })}
+    </section>
+  );
+}

@@ -1,0 +1,10 @@
+<svg width="420" height="120" viewBox="0 0 420 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="8" y="8" width="104" height="104" rx="28" fill="#111827"/>
+<rect x="26" y="26" width="34" height="34" rx="10" fill="#FFCF52"/>
+<rect x="60" y="26" width="34" height="34" rx="10" fill="#46BCAA"/>
+<path d="M43 70L58.5885 79V97L43 106L27.4115 97V79L43 70Z" fill="#F35421"/>
+<circle cx="77" cy="88" r="18" fill="#4D69FA"/>
+<text x="148" y="83" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="700" letter-spacing="1.5">
+NUXEM
+</text>
+</svg>
