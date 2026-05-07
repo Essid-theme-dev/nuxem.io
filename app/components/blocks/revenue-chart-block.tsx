@@ -1,15 +1,7 @@
 "use client";
 
-import {
-  Area,
-  AreaChart,
-  CartesianGrid,
-  Line,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import { Area, AreaChart, CartesianGrid, Line, Tooltip, XAxis, YAxis } from "recharts";
+import { ChartResponsiveContainer } from "@/app/components/charts/chart-responsive-container";
 import { revenueData } from "./dashboard-data";
 import { Card } from "../ui/card";
 
@@ -21,8 +13,8 @@ export function RevenueChartBlock() {
         <p className="text-sm text-zinc-500">Monthly performance overview</p>
       </div>
 
-      <div className="h-72 w-full">
-        <ResponsiveContainer width="100%" height="100%">
+      <div className="h-72 w-full min-w-0">
+        <ChartResponsiveContainer width="100%" height="100%" initialDimension={{ width: 640, height: 288 }}>
           <AreaChart data={revenueData}>
             <CartesianGrid strokeDasharray="4 4" stroke="#e4e4e7" />
             <XAxis dataKey="name" stroke="#71717a" axisLine={false} tickLine={false} />
@@ -63,7 +55,7 @@ export function RevenueChartBlock() {
               </linearGradient>
             </defs>
           </AreaChart>
-        </ResponsiveContainer>
+        </ChartResponsiveContainer>
       </div>
     </Card>
   );

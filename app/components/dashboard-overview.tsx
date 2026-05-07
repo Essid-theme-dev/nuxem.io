@@ -9,15 +9,8 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { useState } from "react";
-import {
-  CartesianGrid,
-  Line,
-  LineChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts";
+import { ChartResponsiveContainer } from "@/app/components/charts/chart-responsive-container";
 
 type User = {
   name: string;
@@ -101,8 +94,8 @@ export default function DashboardOverview() {
           <p className="text-sm text-zinc-500">Monthly performance overview</p>
         </div>
 
-        <div className="h-72 w-full">
-          <ResponsiveContainer width="100%" height="100%">
+        <div className="h-72 w-full min-w-0">
+          <ChartResponsiveContainer width="100%" height="100%" initialDimension={{ width: 640, height: 288 }}>
             <LineChart data={chartData}>
               <CartesianGrid strokeDasharray="4 4" stroke="#e4e4e7" />
               <XAxis dataKey="name" stroke="#71717a" axisLine={false} tickLine={false} />
@@ -123,7 +116,7 @@ export default function DashboardOverview() {
                 activeDot={{ r: 6 }}
               />
             </LineChart>
-          </ResponsiveContainer>
+          </ChartResponsiveContainer>
         </div>
       </section>
 

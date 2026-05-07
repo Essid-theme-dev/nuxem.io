@@ -15,11 +15,11 @@ import {
   PieChart,
   RadialBar,
   RadialBarChart,
-  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
+import { ChartResponsiveContainer } from "@/app/components/charts/chart-responsive-container";
 import { Card } from "../ui/card";
 
 const areaData = [
@@ -68,8 +68,8 @@ export function ChartsGallery() {
       <Card className="nuxem-chart-rise">
         <h3 className="text-sm font-semibold tracking-tight">Area pulse</h3>
         <p className="text-sm text-zinc-500">Smoothed area for pacing metrics.</p>
-        <div className="mt-4 h-[220px] w-full">
-          <ResponsiveContainer width="100%" height="100%">
+        <div className="mt-4 h-[220px] w-full min-w-0">
+          <ChartResponsiveContainer width="100%" height="100%" initialDimension={{ width: 640, height: 220 }}>
             <AreaChart data={areaData}>
               <CartesianGrid strokeDasharray="4 4" stroke="#e4e4e7" />
               <XAxis dataKey="x" stroke="#71717a" axisLine={false} tickLine={false} />
@@ -85,14 +85,14 @@ export function ChartsGallery() {
                 animationDuration={900}
               />
             </AreaChart>
-          </ResponsiveContainer>
+          </ChartResponsiveContainer>
         </div>
       </Card>
       <Card className="nuxem-chart-rise">
         <h3 className="text-sm font-semibold tracking-tight">Bar rhythm</h3>
         <p className="text-sm text-zinc-500">Compact bars ideal for categorical comparisons.</p>
-        <div className="mt-4 h-[220px] w-full">
-          <ResponsiveContainer width="100%" height="100%">
+        <div className="mt-4 h-[220px] w-full min-w-0">
+          <ChartResponsiveContainer width="100%" height="100%" initialDimension={{ width: 640, height: 220 }}>
             <BarChart data={barData}>
               <CartesianGrid strokeDasharray="4 4" stroke="#e4e4e7" />
               <XAxis dataKey="name" stroke="#71717a" axisLine={false} tickLine={false} />
@@ -100,15 +100,15 @@ export function ChartsGallery() {
               <Tooltip />
               <Bar dataKey="val" fill="var(--theme-accent)" radius={[8, 8, 8, 8]} isAnimationActive animationDuration={1000} />
             </BarChart>
-          </ResponsiveContainer>
+          </ChartResponsiveContainer>
         </div>
       </Card>
 
       <Card className="nuxem-chart-rise">
         <h3 className="text-sm font-semibold tracking-tight">Growth vs Churn</h3>
         <p className="text-sm text-zinc-500">Dual-line trend with animated transitions.</p>
-        <div className="mt-4 h-[220px] w-full">
-          <ResponsiveContainer width="100%" height="100%">
+        <div className="mt-4 h-[220px] w-full min-w-0">
+          <ChartResponsiveContainer width="100%" height="100%" initialDimension={{ width: 640, height: 220 }}>
             <LineChart data={lineData}>
               <CartesianGrid strokeDasharray="4 4" stroke="#e4e4e7" />
               <XAxis dataKey="month" stroke="#71717a" axisLine={false} tickLine={false} />
@@ -121,15 +121,15 @@ export function ChartsGallery() {
               <Line type="monotone" dataKey="active" stroke="var(--theme-accent)" strokeWidth={2.5} dot={false} isAnimationActive animationDuration={900} />
               <Line type="monotone" dataKey="churn" stroke="#f97316" strokeWidth={2.5} dot={false} isAnimationActive animationDuration={1100} />
             </LineChart>
-          </ResponsiveContainer>
+          </ChartResponsiveContainer>
         </div>
       </Card>
 
       <Card className="nuxem-chart-rise">
         <h3 className="text-sm font-semibold tracking-tight">Stacked Results</h3>
         <p className="text-sm text-zinc-500">Won vs lost opportunities by channel.</p>
-        <div className="mt-4 h-[220px] w-full">
-          <ResponsiveContainer width="100%" height="100%">
+        <div className="mt-4 h-[220px] w-full min-w-0">
+          <ChartResponsiveContainer width="100%" height="100%" initialDimension={{ width: 640, height: 220 }}>
             <ComposedChart data={stackedData}>
               <CartesianGrid strokeDasharray="4 4" stroke="#e4e4e7" />
               <XAxis dataKey="label" stroke="#71717a" axisLine={false} tickLine={false} />
@@ -142,15 +142,15 @@ export function ChartsGallery() {
               <Bar dataKey="won" stackId="a" fill="var(--theme-accent)" radius={[8, 8, 0, 0]} isAnimationActive animationDuration={900} />
               <Bar dataKey="lost" stackId="a" fill="#f97316" radius={[8, 8, 0, 0]} isAnimationActive animationDuration={1150} />
             </ComposedChart>
-          </ResponsiveContainer>
+          </ChartResponsiveContainer>
         </div>
       </Card>
 
       <Card className="nuxem-chart-rise">
         <h3 className="text-sm font-semibold tracking-tight">Funnel Split</h3>
         <p className="text-sm text-zinc-500">Stage distribution from top to conversion.</p>
-        <div className="mt-4 h-[220px] w-full">
-          <ResponsiveContainer width="100%" height="100%">
+        <div className="mt-4 h-[220px] w-full min-w-0">
+          <ChartResponsiveContainer width="100%" height="100%" initialDimension={{ width: 640, height: 220 }}>
             <PieChart>
               <Pie data={funnelPieData} dataKey="value" nameKey="name" innerRadius={45} outerRadius={82} paddingAngle={3} isAnimationActive animationDuration={1200}>
                 {funnelPieData.map((entry, index) => (
@@ -159,20 +159,20 @@ export function ChartsGallery() {
               </Pie>
               <Tooltip />
             </PieChart>
-          </ResponsiveContainer>
+          </ChartResponsiveContainer>
         </div>
       </Card>
 
       <Card className="nuxem-chart-rise">
         <h3 className="text-sm font-semibold tracking-tight">Quarter Goal</h3>
         <p className="text-sm text-zinc-500">Radial progress with motion.</p>
-        <div className="mt-4 h-[220px] w-full">
-          <ResponsiveContainer width="100%" height="100%">
+        <div className="mt-4 h-[220px] w-full min-w-0">
+          <ChartResponsiveContainer width="100%" height="100%" initialDimension={{ width: 640, height: 220 }}>
             <RadialBarChart innerRadius="58%" outerRadius="92%" data={radialProgress} startAngle={90} endAngle={-270}>
               <RadialBar background dataKey="value" cornerRadius={10} isAnimationActive animationDuration={1200} />
               <Tooltip />
             </RadialBarChart>
-          </ResponsiveContainer>
+          </ChartResponsiveContainer>
         </div>
         <p className="mt-2 text-center text-sm font-semibold text-[var(--theme-accent-deep)] dark:text-[var(--theme-accent-ink)]">78% completed</p>
       </Card>

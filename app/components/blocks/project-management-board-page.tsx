@@ -52,7 +52,7 @@ export function ProjectManagementBoardPage() {
   const progress = {
     done: tasks.filter((task) => task.column === "Done").length,
     total: tasks.length,
-  ];
+  };
 
   return (
     <div className="space-y-5">

@@ -1,6 +1,7 @@
 "use client";
 
-import { Bar, BarChart, Cell, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, Cell, Pie, PieChart, Tooltip, XAxis, YAxis } from "recharts";
+import { ChartResponsiveContainer } from "@/app/components/charts/chart-responsive-container";
 import { Card } from "../ui/card";
 
 const channelData = [
@@ -27,8 +28,8 @@ export function EngagementChartsBlock() {
           <h3 className="text-lg font-semibold tracking-tight">Acquisition Channels</h3>
           <p className="text-sm text-zinc-500">Traffic distribution by source</p>
         </div>
-        <div className="h-64 w-full">
-          <ResponsiveContainer width="100%" height="100%">
+        <div className="h-64 w-full min-w-0">
+          <ChartResponsiveContainer width="100%" height="100%" initialDimension={{ width: 640, height: 256 }}>
             <BarChart data={channelData}>
               <XAxis dataKey="name" axisLine={false} tickLine={false} />
               <YAxis axisLine={false} tickLine={false} />
@@ -45,7 +46,7 @@ export function EngagementChartsBlock() {
                 animationEasing="ease-out"
               />
             </BarChart>
-          </ResponsiveContainer>
+          </ChartResponsiveContainer>
         </div>
       </Card>
 
@@ -54,8 +55,8 @@ export function EngagementChartsBlock() {
           <h3 className="text-lg font-semibold tracking-tight">Conversion Funnel</h3>
           <p className="text-sm text-zinc-500">Journey from visit to retention</p>
         </div>
-        <div className="h-64 w-full">
-          <ResponsiveContainer width="100%" height="100%">
+        <div className="h-64 w-full min-w-0">
+          <ChartResponsiveContainer width="100%" height="100%" initialDimension={{ width: 640, height: 256 }}>
             <PieChart>
               <Pie
                 data={funnelData}
@@ -74,7 +75,7 @@ export function EngagementChartsBlock() {
               </Pie>
               <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid #e4e4e7" }} />
             </PieChart>
-          </ResponsiveContainer>
+          </ChartResponsiveContainer>
         </div>
       </Card>
     </section>
