@@ -27,7 +27,7 @@ export function PageTabs({ items, className }: PageTabsProps) {
           <Link
             key={tab.href}
             href={tab.href}
-            prefetch={tab.href !== "#"}
+            prefetch={false}
             className={clsx(
               "flex-1 rounded-[13px] px-5 py-[9px] text-center text-[13px] font-semibold tracking-tight transition-all sm:flex-none",
               isActive

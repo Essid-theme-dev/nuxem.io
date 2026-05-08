@@ -229,7 +229,7 @@ export default function DashboardShell({ children }: DashboardShellProps) {
                         <li key={`${section.id}-${item.href}`}>
                           <Link
                             href={item.href}
-                            prefetch={item.href !== "#"}
+                            prefetch={false}
                             className={`group relative flex items-center gap-3 rounded-xl border px-3.5 py-[10px] text-[13px] font-semibold leading-tight tracking-tight transition-all ${
                               active
                                 ? "border-[var(--theme-accent-soft)] bg-gradient-to-r from-zinc-800 to-zinc-800 text-zinc-50 shadow-[0_12px_30px_-22px_var(--theme-accent-shadow)] ring-1 ring-[var(--theme-accent-ring)] dark:border-[var(--theme-accent-soft)] dark:bg-gradient-to-r dark:from-zinc-800 dark:to-zinc-800 dark:text-zinc-50 dark:ring-[var(--theme-accent-ring)]"
@@ -267,7 +267,7 @@ export default function DashboardShell({ children }: DashboardShellProps) {
                   <li key={`${item.label}-${item.href}`} className="group relative">
                     <Link
                       href={item.href}
-                      prefetch={item.href !== "#"}
+                      prefetch={false}
                       aria-label={item.label}
                       title={t(language, item.label)}
                       className={`grid size-[46px] place-items-center rounded-2xl border transition-all ${
