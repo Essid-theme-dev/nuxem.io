@@ -40,7 +40,7 @@ export default function DashboardShell({ children }: DashboardShellProps) {
   const pathname = usePathname();
   const [collapsed, setCollapsed] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [language, setLanguage] = useState<AppLanguage>("EN");
   const [showLangMenu, setShowLangMenu] = useState(false);
@@ -75,8 +75,7 @@ export default function DashboardShell({ children }: DashboardShellProps) {
 
   useEffect(() => {
     const savedTheme = window.localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const shouldUseDark = savedTheme ? savedTheme === "dark" : prefersDark;
+    const shouldUseDark = savedTheme ? savedTheme === "dark" : true;
 
     setIsDarkMode(shouldUseDark);
     document.documentElement.classList.toggle("dark", shouldUseDark);

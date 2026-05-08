@@ -31,7 +31,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
+      data-accent-theme="blue"
     >
       <body className="min-h-full">{children}</body>
     </html>
