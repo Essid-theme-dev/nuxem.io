@@ -17,6 +17,7 @@ const groups = [
     ],
     extraMembers: ["Liam Foster", "Ava Collins", "Noah Price", "Grace Turner", "Mason Bell"],
     icon: Palette,
+    cover: "https://picsum.photos/seed/design-team-studio/1000/600",
   },
   {
     name: "Development Team",
@@ -31,6 +32,7 @@ const groups = [
     ],
     extraMembers: ["Lucas Green", "Ella Adams", "James Ward", "Sofia Hayes", "Henry Cole"],
     icon: Wrench,
+    cover: "https://picsum.photos/seed/development-team-standup/1000/600",
   },
   {
     name: "Marketing Team",
@@ -45,6 +47,7 @@ const groups = [
     ],
     extraMembers: ["Emma Brooks", "David Stone", "Mila Reed"],
     icon: Megaphone,
+    cover: "https://picsum.photos/seed/marketing-campaign-room/1000/600",
   },
 ];
 
@@ -55,9 +58,9 @@ export function TeamGroups() {
         const Icon = group.icon;
         return (
           <Card key={group.name} className="group hover-lift overflow-hidden p-0">
-            <div className="relative h-32 w-full overflow-hidden bg-gradient-to-br from-[var(--theme-accent-bg)] via-white to-zinc-100 dark:from-[var(--theme-accent-bg-dark)] dark:via-zinc-900 dark:to-zinc-950">
-              <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-[var(--theme-accent-soft)] blur-2xl" />
-              <div className="absolute -bottom-10 left-1/2 h-28 w-28 -translate-x-1/2 rounded-full bg-[var(--theme-accent-ring)] blur-2xl" />
+            <div className="relative h-32 w-full overflow-hidden">
+              <Image src={group.cover} alt={`${group.name} cover`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/25 to-black/55" />
               <div className="absolute inset-x-4 bottom-4 flex items-center justify-between">
                 <span className="inline-flex items-center gap-1 rounded-full border border-[var(--theme-accent-soft)] bg-white/95 px-2.5 py-1 text-[11px] font-semibold text-[var(--theme-accent-deep)] dark:bg-zinc-900/85 dark:text-[var(--theme-accent-ink)]">
                   <Icon size={12} />

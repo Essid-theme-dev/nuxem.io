@@ -1,6 +1,6 @@
 "use client";
 
-import { Bell, CheckCheck, ChevronDown, ChevronRight, LogOut, Maximize2, Minimize2, Moon, Palette, PanelLeftClose, PanelLeftOpen, Search, Sun, X } from "lucide-react";
+import { Bell, CheckCheck, ChevronDown, ChevronRight, LogOut, Maximize2, Menu, Minimize2, Moon, Palette, PanelLeftClose, PanelLeftOpen, Search, Sun, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -39,6 +39,7 @@ const marketingTeamAvatars = [
 export default function DashboardShell({ children }: DashboardShellProps) {
   const pathname = usePathname();
   const [collapsed, setCollapsed] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [language, setLanguage] = useState<AppLanguage>("EN");
@@ -164,6 +165,10 @@ export default function DashboardShell({ children }: DashboardShellProps) {
     });
   }, [pathname]);
 
+  useEffect(() => {
+    setMobileNavOpen(false);
+  }, [pathname]);
+
   const toggleSection = (id: string) =>
     setOpenSections((prev) => ({ ...prev, [id]: !prev[id] }));
 
@@ -171,10 +176,20 @@ export default function DashboardShell({ children }: DashboardShellProps) {
     href !== "#" && (pathname === href || (href !== "/" && pathname.startsWith(href)));
 
   return (
-    <div className="dashboard-canvas-bg flex h-screen overflow-y-hidden overflow-x-visible text-slate-900 dark:text-zinc-100">
+    <div className="dashboard-canvas-bg flex min-h-screen overflow-x-hidden text-slate-900 dark:text-zinc-100 lg:h-screen lg:overflow-y-hidden lg:overflow-x-visible">
+      {mobileNavOpen ? (
+        <button
+          type="button"
+          aria-label="Close navigation menu"
+          className="fixed inset-0 z-40 bg-black/45 backdrop-blur-[1px] lg:hidden"
+          onClick={() => setMobileNavOpen(false)}
+        />
+      ) : null}
       <aside
-        className={`m-[18px] flex h-[calc(100vh-36px)] flex-shrink-0 flex-col overflow-visible rounded-[24px] border border-[var(--sidebar-shell-border)] bg-gradient-to-b from-[var(--sidebar-shell-bg-from)] via-[var(--sidebar-shell-bg-via)] to-[var(--sidebar-shell-bg-to)] text-[var(--sidebar-shell-text)] shadow-[0_26px_64px_-22px_var(--theme-accent-shadow)] transition-[width] duration-300 dark:border-[var(--sidebar-shell-border)] dark:from-[var(--sidebar-shell-bg-from)] dark:via-[var(--sidebar-shell-bg-via)] dark:to-[var(--sidebar-shell-bg-to)] dark:shadow-black/80 ${
-          collapsed ? "w-[86px]" : "w-[280px]"
+        className={`fixed left-3 top-3 z-50 flex h-[calc(100vh-24px)] w-[280px] flex-shrink-0 flex-col overflow-visible rounded-[24px] border border-[var(--sidebar-shell-border)] bg-gradient-to-b from-[var(--sidebar-shell-bg-from)] via-[var(--sidebar-shell-bg-via)] to-[var(--sidebar-shell-bg-to)] text-[var(--sidebar-shell-text)] shadow-[0_26px_64px_-22px_var(--theme-accent-shadow)] transition-transform duration-300 dark:border-[var(--sidebar-shell-border)] dark:from-[var(--sidebar-shell-bg-from)] dark:via-[var(--sidebar-shell-bg-via)] dark:to-[var(--sidebar-shell-bg-to)] dark:shadow-black/80 lg:relative lg:left-auto lg:top-auto lg:z-auto lg:m-[18px] lg:h-[calc(100vh-36px)] lg:transition-[width] ${
+          mobileNavOpen ? "translate-x-0" : "-translate-x-[120%] lg:translate-x-0"
+        } ${
+          collapsed ? "lg:w-[86px]" : "lg:w-[280px]"
         }`}
       >
         <header
@@ -183,7 +198,7 @@ export default function DashboardShell({ children }: DashboardShellProps) {
           }`}
         >
           <LogoLockup collapsed={collapsed} />
-          <div className="group relative">
+          <div className="group relative hidden lg:block">
             <button
               type="button"
               onClick={() => setCollapsed((prev) => !prev)}
@@ -372,6 +387,14 @@ export default function DashboardShell({ children }: DashboardShellProps) {
         <header className="mb-4 flex flex-wrap items-center justify-between gap-4 rounded-[22px] border border-slate-200/85 bg-[var(--sidebar-surface)] px-4 py-[12px] shadow-[0_16px_50px_-42px_rgba(15,23,42,0.45)] dark:border-white/10 dark:bg-zinc-950/62 sm:px-5 sm:py-[13px] lg:mb-5 lg:px-7 lg:py-[14px]">
           <div className="min-w-[200px]">
             <div className="flex flex-wrap items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setMobileNavOpen(true)}
+                className="inline-flex size-9 items-center justify-center rounded-xl border border-slate-200/95 bg-white/95 text-slate-700 shadow-[0_2px_8px_rgba(15,23,42,0.05)] hover:border-[var(--theme-accent-soft)] hover:text-[var(--theme-accent-deep)] dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-[var(--theme-accent-soft)] dark:hover:text-[var(--theme-accent-ink)] lg:hidden"
+                aria-label="Open navigation menu"
+              >
+                <Menu size={17} />
+              </button>
               <h1 className="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">
                 {t(language, header.title)}
               </h1>
@@ -410,7 +433,7 @@ export default function DashboardShell({ children }: DashboardShellProps) {
             </div>
           </div>
 
-          <div className="relative flex shrink-0 items-center gap-2.5">
+          <div className="relative flex shrink-0 items-center gap-2 sm:gap-2.5">
             <div className="relative hidden md:block md:w-[250px]">
               <Search
                 className="pointer-events-none absolute left-4 top-1/2 size-[18px] -translate-y-1/2 text-slate-400 dark:text-zinc-500"
@@ -515,7 +538,7 @@ export default function DashboardShell({ children }: DashboardShellProps) {
               ) : null}
             </div>
 
-            <div className="relative" ref={accentMenuRef}>
+            <div className="relative hidden sm:block" ref={accentMenuRef}>
               <button
                 type="button"
                 onClick={() => {
@@ -556,7 +579,7 @@ export default function DashboardShell({ children }: DashboardShellProps) {
             <button
               type="button"
               onClick={toggleTheme}
-              className="inline-flex size-11 items-center justify-center rounded-2xl border border-slate-200/95 bg-white/95 text-slate-700 shadow-[0_2px_8px_rgba(15,23,42,0.05)] hover:border-[var(--theme-accent-soft)] hover:text-[var(--theme-accent-deep)] dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-[var(--theme-accent-soft)] dark:hover:text-[var(--theme-accent-ink)]"
+              className="inline-flex size-10 items-center justify-center rounded-2xl border border-slate-200/95 bg-white/95 text-slate-700 shadow-[0_2px_8px_rgba(15,23,42,0.05)] hover:border-[var(--theme-accent-soft)] hover:text-[var(--theme-accent-deep)] dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-[var(--theme-accent-soft)] dark:hover:text-[var(--theme-accent-ink)] sm:size-11"
               aria-label="Toggle theme"
               title="Toggle theme"
             >
@@ -576,7 +599,7 @@ export default function DashboardShell({ children }: DashboardShellProps) {
                   // ignore if browser denies fullscreen
                 }
               }}
-              className="inline-flex size-11 items-center justify-center rounded-2xl border border-slate-200/95 bg-white/95 text-slate-700 shadow-[0_2px_8px_rgba(15,23,42,0.05)] hover:border-[var(--theme-accent-soft)] hover:text-[var(--theme-accent-deep)] dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-[var(--theme-accent-soft)] dark:hover:text-[var(--theme-accent-ink)]"
+              className="hidden size-11 items-center justify-center rounded-2xl border border-slate-200/95 bg-white/95 text-slate-700 shadow-[0_2px_8px_rgba(15,23,42,0.05)] hover:border-[var(--theme-accent-soft)] hover:text-[var(--theme-accent-deep)] dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-[var(--theme-accent-soft)] dark:hover:text-[var(--theme-accent-ink)] md:inline-flex"
               aria-label="Toggle fullscreen"
               title="Fullscreen"
             >
@@ -592,7 +615,7 @@ export default function DashboardShell({ children }: DashboardShellProps) {
                   setShowAccentMenu(false);
                   setShowNotifications(false);
                 }}
-                className="inline-flex items-center gap-2 rounded-full border border-transparent bg-gradient-to-br from-[var(--brand-fill-from)] via-[var(--brand-fill-from)] to-[var(--brand-fill-to)] px-[14px] py-2 text-[13px] font-semibold text-white shadow-[0_10px_34px_-20px_var(--theme-accent-shadow)] hover:brightness-105 hover:shadow-lg"
+                className="inline-flex items-center gap-2 rounded-full border border-transparent bg-gradient-to-br from-[var(--brand-fill-from)] via-[var(--brand-fill-from)] to-[var(--brand-fill-to)] px-2.5 py-2 text-[13px] font-semibold text-white shadow-[0_10px_34px_-20px_var(--theme-accent-shadow)] hover:brightness-105 hover:shadow-lg sm:px-[14px]"
                 aria-label="Profile menu"
               >
                 <span className="relative size-7 overflow-hidden rounded-full ring-2 ring-white/35">
