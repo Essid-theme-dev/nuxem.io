@@ -1,17 +1,17 @@
 import type { NextConfig } from "next";
 
-const isGitHubActions = process.env.GITHUB_ACTIONS === "true";
+const isGitHubPagesBuild = process.env.GITHUB_ACTIONS === "true" && Boolean(process.env.GITHUB_REPOSITORY);
 const repoName = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "";
-const projectBasePath = isGitHubActions && repoName ? `/${repoName}` : "";
+const projectBasePath = isGitHubPagesBuild && repoName ? `/${repoName}` : "";
 
 const nextConfig: NextConfig = {
   env: {
     NEXT_PUBLIC_BASE_PATH: projectBasePath,
   },
-  output: "export",
-  trailingSlash: true,
-  basePath: projectBasePath || undefined,
-  assetPrefix: projectBasePath || undefined,
+  output: isGitHubPagesBuild ? "export" : undefined,
+  trailingSlash: isGitHubPagesBuild,
+  basePath: isGitHubPagesBuild ? projectBasePath : undefined,
+  assetPrefix: isGitHubPagesBuild ? projectBasePath : undefined,
   images: {
     unoptimized: true,
     remotePatterns: [
